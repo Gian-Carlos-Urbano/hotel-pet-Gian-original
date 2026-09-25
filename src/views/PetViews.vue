@@ -12,11 +12,11 @@ const tutores = ref([])
 const loading = ref(true)
 
 async function carregarDados() {
-  const respostaPets = await fetch(`${API_URL/pets}`)
+  const respostaPets = await fetch(`${API_URL}/pets`)
   pets.value = await respostaPets.json();
   console.log('pets',pets.value)
 
-  const respostaTutores = await fetch(`${API_URL/tutores}`)
+  const respostaTutores = await fetch(`${API_URL}/tutores`)
   tutores.value = await respostaTutores.json();
   console.log('turores',tutores.value)
   loading.value = false
@@ -51,7 +51,7 @@ onMounted(carregarDados)
       Adicionar Pet
     </RouterLink>
 
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th></th>
