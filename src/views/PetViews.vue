@@ -54,10 +54,10 @@ onMounted(carregarDados)
     <table class="table table-striped">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Especie</th>
+          <th>Tutor</th>
         </tr>
       </thead>
 
