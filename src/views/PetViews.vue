@@ -12,14 +12,23 @@ const tutores = ref([])
 const loading = ref(true)
 
 async function carregarDados() {
-  const respostaPets = await fetch('$API_URL/pets')
+  const respostaPets = await fetch(`${API_URL/pets}`)
   pets.value = await respostaPets.json();
   console.log('pets',pets.value)
 
-  const respostaTutores = await fetch('$API_URL/pets')
+  const respostaTutores = await fetch(`${API_URL/tutores}`)
   tutores.value = await respostaTutores.json();
   console.log('turores',tutores.value)
   loading.value = false
+}
+
+
+function nomeTutor(tutorId) {
+  for (const tutor of tutores.value) {
+    if (tutor.id == tutorId) {
+      return tutor.value
+    }
+  }
 }
 
 
@@ -41,5 +50,27 @@ onMounted(carregarDados)
     >
       Adicionar Pet
     </RouterLink>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="pet in pets" :key="pet.id">
+          <th>{{ pet.id }}</th>
+          <th>{{ pet.nome }}</th>
+          <th>{{ pet.especie }}</th>
+          <th>{{ nomeTutor(pet.tutorId) }}</th>
+        </tr>
+      </tbody>
+
+    </table>
+
   </div>
 </template>
