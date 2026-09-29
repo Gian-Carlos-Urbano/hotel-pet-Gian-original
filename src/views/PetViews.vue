@@ -18,7 +18,9 @@ async function carregarDados() {
 
   const respostaTutores = await fetch(`${API_URL}/tutores`)
   tutores.value = await respostaTutores.json();
+
   console.log('turores',tutores.value)
+
   loading.value = false
 }
 
@@ -26,9 +28,11 @@ async function carregarDados() {
 function nomeTutor(tutorId) {
   for (const tutor of tutores.value) {
     if (tutor.id == tutorId) {
-      return tutor.value
+      return tutor.nome;
     }
   }
+
+  return 'Tutor Não Encontrado'
 }
 
 
